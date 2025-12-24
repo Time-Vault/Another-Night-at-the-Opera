@@ -1,7 +1,6 @@
-import {
-  CharacterAttributes,
-  SpecialCondition,
-} from "../Characters/characterTypes";
+import { CharacterAttributes } from "../Characters/characterTypes";
+
+import { SpecialCondition } from "../Characters/specialConditions";
 
 import { Weapon, Item } from "../Characters/itemTypes";
 

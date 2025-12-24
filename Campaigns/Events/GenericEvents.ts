@@ -1,8 +1,9 @@
 import { Event } from "../eventTypes";
 import { CharacterIDs } from "../../Characters/characterTypes";
+import { specialConditionsLibrary } from "../../Characters/specialConditions";
 
 // Function to randomly choose present characters for an event
-function choosePresentCharacters(numberPresent: number): CharacterIDs[] {
+export function choosePresentCharacters(numberPresent: number): CharacterIDs[] {
   const allCharacters: CharacterIDs[] = [
     "LEAD AGENT",
     "AGENT 2",
@@ -28,6 +29,7 @@ function choosePresentCharacters(numberPresent: number): CharacterIDs[] {
   return presentCharacters;
 }
 
+// Events that can be used in any campaign act
 export const genericEventsLibrary: Event[] = [
   {
     title: "Coffee Break",
@@ -37,23 +39,31 @@ export const genericEventsLibrary: Event[] = [
     id: "coffee_please",
     options: [
       {
-        title: "2 Coffees. Black. ",
+        title: "2 Coffees. Black.",
         description:
           "The Agents sit in silence, sipping on their coffee and enjoying their rainbow sprinkled donuts.",
         testAttribute: "Luck",
-        testModifier: 20,
+        testModifier: 30,
         successOutcome: {
           description: "Nothing beats a hot cup of joe.",
-          effectOnAttributes: {
-            SAN: 5,
-          },
+          conditionsGained: [
+            specialConditionsLibrary.find(
+              (condition) => condition.name === "Caffeinated"
+            ) || specialConditionsLibrary[0],
+          ],
         },
         failureOutcome: {
-          description: "Groversville coffee always has tasted a bit strange...",
-          effectOnAttributes: {
-            SAN: 2,
-          },
+          description: "Groversville coffee always did taste a bit strange...",
+          conditionsGained: [
+            specialConditionsLibrary.find(
+              (condition) => condition.name === "Groversville Special"
+            ) || specialConditionsLibrary[0],
+          ],
         },
+      },
+      {
+        title: "No Time to Dwadle",
+        description: "The mission ends when the world does. Get back to it.",
       },
     ],
   },

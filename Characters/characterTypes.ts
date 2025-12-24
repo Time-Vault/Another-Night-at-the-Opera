@@ -1,4 +1,5 @@
 import { Weapon, Item } from "./itemTypes";
+import { SpecialCondition } from "./specialConditions";
 
 export type CharacterIDs = "LEAD AGENT" | "AGENT 2" | "AGENT 3" | "AGENT 4";
 
@@ -48,10 +49,4 @@ interface Bond {
 interface SpecialTraining {
   name: string;
   description?: string;
-}
-
-export interface SpecialCondition {
-  name: string;
-  description: string;
-  statEffects?: Partial<CharacterAttributes>;
 }
