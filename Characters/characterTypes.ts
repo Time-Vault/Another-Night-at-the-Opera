@@ -1,7 +1,9 @@
 import { Weapon, Item } from "./itemTypes";
 
+export type CharacterIDs = "LEAD AGENT" | "AGENT 2" | "AGENT 3" | "AGENT 4";
+
 export interface CharacterSheet {
-  id: string;
+  id: CharacterIDs;
   name: string;
   job?: string;
   age?: number;
@@ -34,6 +36,7 @@ export interface CharacterAttributes {
   SAN: number;
   // Breaking Point
   BP: number;
+  Luck: 50;
 }
 
 interface Bond {

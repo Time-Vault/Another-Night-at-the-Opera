@@ -6,7 +6,7 @@ import {
 import { Weapon, Item } from "../Characters/itemTypes";
 
 // Generic building block of events to be shown to players
-export interface eventType {
+export interface Event {
   id: string;
   title: string;
   description: string;
@@ -20,11 +20,16 @@ interface EventOptions {
   description: string;
   testAttribute?: keyof CharacterAttributes;
   testModifier?: number;
+  defaultOutcome?: EventOutcome;
   successOutcome?: EventOutcome;
   failureOutcome?: EventOutcome;
-  prereqItems?: string[];
+  prereq?: [
+    {
+      compared: "TRAINING" | "CONDITION" | "ITEM" | "WEAPON";
+      name: string;
+    }
+  ];
   consumedItemsOnUse?: string[];
-  prereqWeapons?: string[];
   consumedWeaponsOnUse?: string[];
 }
 
