@@ -4,9 +4,9 @@ export interface CharacterSheet {
   age?: number;
   attributes: CharacterAttributes;
   bonds: Bond[];
-  weapons: Weapon[];
-  specialConditions: SpecialCondition[];
-  specialTrainings: SpecialTraining[];
+  weapons?: Weapon[];
+  specialConditions?: SpecialCondition[];
+  specialTrainings?: SpecialTraining[];
 }
 
 interface CharacterAttributes {
@@ -48,6 +48,7 @@ interface Weapon {
 
 interface SpecialTraining {
   name: string;
+  description?: string;
 }
 
 interface SpecialCondition {
